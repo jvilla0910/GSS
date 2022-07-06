@@ -52,6 +52,8 @@ barchartGC(~CAPPUN + OWNGUN,data=GSSdata, type="percent")
 
 ```
 
+There is a clear difference. The pink bar is in favor by 60. While the blue bar is in favor by 55. The pink is opposed by 45. While the blue is opposed by about 20. The pink is in favor by 5 more. While the blue is more opposed by 25. 
+
 #### Numerical Descriptive Results
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
