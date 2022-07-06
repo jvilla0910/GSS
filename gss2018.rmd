@@ -83,11 +83,19 @@ Is there a difference in years of education (EDUC) between the those who did or 
 
 Determine if a persons performance on the wordsum test (WORDSUM) is independent of their level of schooling (DEGREE).
 
+The data is in the file GSScsv.csv and came from the 2018 General Social Survey.  The question to answer is to resolve this hypothesis.
+
+$H_0$ There is no difference between the average score on the WORDSUM test and level of schooling DEGREE
+
+$H_a$ There is a significant difference in average score on the WORDSUM test between at least two levels of DEGREE  
+
 ## Methods
 
 <!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method.!-->
 
-##Results
+WORDSUM is a numerical variable, DEGREE is a categorical variable. 
+
+## Results
 
 <!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!-->
 
@@ -95,16 +103,34 @@ Determine if a persons performance on the wordsum test (WORDSUM) is independent 
 
 #### Graphical Descriptive Results
 
+```{r}
+boxplot(WORDSUM~DEGREE,data=GSSdata)
+```
+
+From the box plot it appears that, the students in less than high school have a median less than that of the students in high school and in Bachelor.
+
+
 <!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
 #### Numerical Descriptive Results
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
+```{r}
+favstats(WORDSUM~DEGREE,data=GSSdata)
+```
+
+From this table, it appears that the median of the graduate students is the greatest with a 11. It looks like there is a difference in the ability in the WORSUM category. 
+
 ### Inferential Results
 
 <!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
 
+```{r}
+model1 <- aov(WORDSUM~DEGREE,data=GSSdata)
+summary.aov(model1)
+```
+The p-value is 0.000236. This is because the p-value is less than 0.05, we reject the null hypothesis.  
 
 # Discussion and Conclusion
 
